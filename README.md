@@ -25,9 +25,9 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can th
 To use generator-chromeextension :
 
 ```
-$ git clone https://github.com/luokebi/generator-chromeextension.git ~./gernerator-chromeextension
+$ git clone https://github.com/luokebi/generator-chromeextension.git
 
-$ cd ~./gernerator-chromeextension
+$ cd gernerator-chromeextension
 
 $ npm install
 
