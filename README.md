@@ -39,6 +39,7 @@ $ mkdir xxx
 $ cd xxx
 $ yo chromeExtension
 ```
+if you can't find your generator, use ```yo --help```.
 
 ### Getting To Know Yeoman
 

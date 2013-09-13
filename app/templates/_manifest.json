@@ -21,8 +21,11 @@
     "default_popup": "popup.html"
     },
   <% } %>
+  <% if (ifOption) { %>
+    "options_page": "options.html",
+  <% } %>
   
-  "permissions" : ["http://*",<% for (var i = 0;i < permissions.length;i++){%>"<%= permissions[i] %>",<% } %>"https://*"]
+  "permissions" : ["http://*",<% for (var i = 0;i < permissions.length;i++){%>"<%= permissions[i] %>",<% } %>"https://*"],
   "minimum_chrome_version": "23"
 
 }

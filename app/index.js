@@ -47,6 +47,12 @@ ChromeextensionGenerator.prototype.askFor = function askFor() {
     default: true
   },
   {
+    type: "confirm",
+    name: "ifOption",
+    message: "Will your extension have a option page?",
+    default: false
+  },
+  {
     type: "checkbox",
     name: "permissions",
     message: "What permissions will your extension use?",
@@ -92,6 +98,7 @@ ChromeextensionGenerator.prototype.askFor = function askFor() {
     this.ifBrowserAction = props.ifBrowserAction;
     this.ifContentScript = props.ifContentScript;
     this.ifBackground = props.ifBackground;
+    this.ifOption = props.ifOption;
 
     var permissions = props.permissions;
     this.permissions = props.permissions;
@@ -130,6 +137,9 @@ ChromeextensionGenerator.prototype.app = function app() {
 
   if (this.ifBrowserAction) {
     this.template('_popup.html','popup.html');
+  }
+  if (this.ifOption) {
+    this.copy('_options.html','options.html');
   }
 
 };
