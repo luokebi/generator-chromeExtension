@@ -4,7 +4,7 @@
   "version": "1",
   <% if (ifBackground) { %>
   "background":{
-    "page":"bg.html"
+    "script":"js/background.js"
     },
   <% } %>
   <% if (ifContentScript) { %>
