@@ -1,5 +1,4 @@
-# generator-chromeextension [![Build Status](https://secure.travis-ci.org/luokebi/generator-chromeextension.png?branch=master)](https://travis-ci.org/luokebi/generator-chromeextension)
-
+# generator-chromeextension
 A generator for [Yeoman](http://yeoman.io).
 
 
@@ -23,16 +22,24 @@ $ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-chromeextension from npm, run:
+To use generator-chromeextension :
 
 ```
-$ npm install -g generator-chromeextension
+$ git clone https://github.com/luokebi/generator-chromeextension.git ~./gernerator-chromeextension
+
+$ cd ~./gernerator-chromeextension
+
+$ npm install
+
+$ npm link
 ```
 
 Finally, initiate the generator:
 
 ```
-$ yo chromeextension
+$ mkdir xxx
+$ cd xxx
+$ yo chromeExtension
 ```
 
 ### Getting To Know Yeoman
