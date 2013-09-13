@@ -1,4 +1,4 @@
-# generator-chromeextension
+# generator-chromeExtension
 A generator for [Yeoman](http://yeoman.io).
 
 
@@ -25,11 +25,9 @@ Yeoman travels light. He didn't pack any generators when he moved in. You can th
 To use generator-chromeextension :
 
 ```
-$ git clone https://github.com/luokebi/generator-chromeextension.git
+$ git clone https://github.com/luokebi/generator-chromeExtension.git
 
-$ cd gernerator-chromeextension
-
-$ npm install
+$ cd gernerator-chromeExtension
 
 $ npm link
 ```
