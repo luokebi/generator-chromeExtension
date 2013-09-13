@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "<%= name%>",
+  "version": "1",
+  <% if (ifBackground) { %>
+  "background":{
+    "page":"bg.html"
+    },
+  <% } %>
+  <% if (ifContentScript) { %>
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["contentscript.js"],
+    "run_at": "document_end"
+    }],
+  <% } %>
+  <% if (ifBrowserAction) { %>
+    "browser_action": {
+    "default_icon": "icon19.png",
+    "default_title": "Hello World",
+    "default_popup": "popup.html"
+    },
+  <% } %>
+  
+  "permissions" : ["http://*",<% for (var i = 0;i < permissions.length;i++){%>"<%= permissions[i] %>",<% } %>"https://*"]
+  "minimum_chrome_version": "23"
+
+}

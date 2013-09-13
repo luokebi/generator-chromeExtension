@@ -1,0 +1,13 @@
+Description:
+    Creates a new basic chrome extension structure.
+
+Example:
+    yo chromeExtension
+
+    This will create:
+        popup.html: popup.html will be rendered inside the popup window that's created in response to a user's click on the browser action.
+        manifest.json: The manifest is nothing more than a JSON-formatted table of contents, containing properties like your extension's name and description, its version number, and so on.
+        package.json: Development packages installed by npm.
+
+        css/: Your css files.
+        js/: Your javascript files.
