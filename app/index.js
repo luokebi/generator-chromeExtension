@@ -53,6 +53,12 @@ ChromeextensionGenerator.prototype.askFor = function askFor() {
     default: false
   },
   {
+    type: "confirm",
+    name: "ifBuildTool",
+    message: "Do you want build tool (grunt) for your project?",
+    default : true
+  },
+  {
     type: "checkbox",
     name: "permissions",
     message: "What permissions will your extension use?",
@@ -99,10 +105,11 @@ ChromeextensionGenerator.prototype.askFor = function askFor() {
     this.ifContentScript = props.ifContentScript;
     this.ifBackground = props.ifBackground;
     this.ifOption = props.ifOption;
+    this.ifBuildTool = props.ifBuildTool;
 
     var permissions = props.permissions;
     this.permissions = props.permissions;
-    console.log(permissions);
+
     function hasPermission(per) {
       return permissions.indexOf(per) !== -1;
     }
@@ -121,31 +128,29 @@ ChromeextensionGenerator.prototype.askFor = function askFor() {
 };
 
 ChromeextensionGenerator.prototype.app = function app() {
-  this.mkdir('js');
-  this.mkdir('css');
+  this.mkdir('src/js/background');
+  this.mkdir('src/js/contentscript');
+  this.mkdir('src/js/popup');
+  this.mkdir('ext/css');
+  this.mkdir('ext/images');
 
-  this.copy('_package.json','package.json');
+  this.template('_package.json','package.json');
   this.template('_manifest.json','manifest.json');
+  this.copy('.gitignore','.gitignore');
 
   if (this.ifBackground) {
-    this.copy('_background.js','js/background.js');
+    this.copy('_background.js','src/js/background/background.js');
   }
 
   if (this.ifContentScript) {
-    this.copy('_contentscript.js','js/contentscript.js');
+    this.copy('_contentscript.js','src/js/contentscript/contentscript.js');
   }
 
   if (this.ifBrowserAction) {
     this.template('_popup.html','popup.html');
+    this.copy('_popup.js','src/js/popup/popup.js');
   }
   if (this.ifOption) {
     this.copy('_options.html','options.html');
   }
-
 };
-
-/*ChromeextensionGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
-};
-*/
