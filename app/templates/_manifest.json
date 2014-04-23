@@ -10,7 +10,7 @@
   <% if (ifContentScript) { %>
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
-    "js": ["contentscript.js"],
+    "js": ["js/contentscript.js"],
     "run_at": "document_end"
     }],
   <% } %>

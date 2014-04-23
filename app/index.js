@@ -8,7 +8,16 @@ var ChromeextensionGenerator = module.exports = function ChromeextensionGenerato
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({ 
+      skipInstall: options['skip-install'],
+      callback: function () {
+        this.emit('dependenciesInstalled');
+      }.bind(this)
+      });
+  });
+
+  this.on('dependenciesInstalled', function() {
+     this.spawnCommand('grunt', ['dev']);
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -133,10 +142,16 @@ ChromeextensionGenerator.prototype.app = function app() {
   this.mkdir('src/js/popup');
   this.mkdir('ext/css');
   this.mkdir('ext/images');
+  this.mkdir('ext/libs');
+  this.mkdir('ext/third-party');
 
   this.template('_package.json','package.json');
-  this.template('_manifest.json','manifest.json');
+  this.template('_manifest.json','ext/manifest.json');
   this.copy('.gitignore','.gitignore');
+  if (this.ifBuildTool) {
+    this.copy('_Gruntfile.js','Gruntfile.js');
+  }
+  
 
   if (this.ifBackground) {
     this.copy('_background.js','src/js/background/background.js');
@@ -147,10 +162,11 @@ ChromeextensionGenerator.prototype.app = function app() {
   }
 
   if (this.ifBrowserAction) {
-    this.template('_popup.html','popup.html');
+    this.template('_popup.html','ext/popup.html');
     this.copy('_popup.js','src/js/popup/popup.js');
   }
   if (this.ifOption) {
-    this.copy('_options.html','options.html');
+    this.copy('_options.html','ext/options.html');
+    this.copy('_options.js','src/js/options.js');
   }
 };
